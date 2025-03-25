@@ -4,10 +4,12 @@
 
 #define NROW 3
 #define NCOL 5
+#define FLOATHOLDER "%8.3lf"
+#define INTHOLDER "%8d"
 
 double dRand();
 double dAvg(double arrp[]);
-double dMax(double * pMax);
+void dMax(double * pMax, double value);
 
 int main(void) {
     double arr[NCOL][NROW];
@@ -15,15 +17,17 @@ int main(void) {
     int i = 0, j = 0;
     
     srand( (unsigned int) time(0));
-    printf("Row %6d %6d %6d %6d %6d      Average\n", 0, 1, 2, 3, 4);
+    printf("Row " INTHOLDER INTHOLDER INTHOLDER INTHOLDER INTHOLDER"   Average\n", 0, 1, 2, 3, 4);
     for ( i = 0; i < NROW; i++) {
-        printf("%3d", j);
+        printf("%3d ", i);
         for ( j = 0; j < NCOL; j++) {
             arr[j][i] = dRand();
-            printf(" %6.3lf ", arr[j][i]);
+            printf( FLOATHOLDER , arr[j][i]);
+            dMax(&max, arr[j][i]);
         }
-        printf(" %5.3lf\n\n",dAvg(arr[i]));
+        printf(" " FLOATHOLDER"\n\n",dAvg(arr[i]));
     }
+    printf("Max = "FLOATHOLDER, max);
 
     return 0;
 
@@ -43,8 +47,9 @@ double dAvg(double arr[]) {
     return avg / NROW;
 }
 
-double dMax(double * pMax) {
-
-    return 0.0;
+void dMax(double * pMax, double val) {
+    if (*pMax < val) {
+        *pMax = val;
+    }
 
 }
