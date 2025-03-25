@@ -8,7 +8,7 @@
 #define INTHOLDER "%8d"
 
 double dRand();
-double dAvg(double arrp[]);
+double dAvg(double arr[]);
 void dMax(double * pMax, double value);
 
 int main(void) {
@@ -27,7 +27,7 @@ int main(void) {
         }
         printf(" " FLOATHOLDER"\n\n",dAvg(arr[i]));
     }
-    printf("Max = "FLOATHOLDER, max);
+    printf("Max = %lf", max);
 
     return 0;
 
@@ -35,7 +35,7 @@ int main(void) {
 
 double dRand() {
 
-    return (rand() % 10);
+    return rand()  % 10;
 
 }
 
